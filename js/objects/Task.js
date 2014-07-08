@@ -4,11 +4,13 @@ function Task (subject, manHour, content) {
 	this.content = content;
 }
 
-Task.prototype.draw = function() {
+Task.prototype.append = function($obj) {
 	var task = $('<div>');
 	task.addClass('task');
 
 	this.subject.append(task);
 	this.manHour.append(task);
 	this.content.append(task);
+
+	$obj.append(task);
 };
