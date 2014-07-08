@@ -21,5 +21,6 @@ TaskList.prototype.appendTasks = function($obj) {
 };
 
 TaskList.prototype.refresh = function() {
+	this.element.empty();
 	this.appendTasks(this.element);
 };
