@@ -9,5 +9,35 @@
 <body>
 <h1>日報メールサポーター</h1>
 
+<h2>日報の日付</h2>
+<div>
+	<input type="date" id="date" value="">
+</div>
+
+<h2>タスク一覧</h2>
+<div id="tasks">
+	<button class="add">タスクを追加</button>
+	<div id="taskList"></div>
+</div>
+
+<h2>レッツクリエイト！</h2>
+<div>
+	<button id="make">メール作成！！</button>
+</div>
+
+<h2>メール作成結果</h2>
+<div id="maked" >
+	<div id="workSchedule">
+		<h3>作業予定メール</h3>
+		<input type="text" class="mailSubject" value="" /><br />
+		<textarea class="mailBody"></textarea>
+	</div>
+	<div id="workReport">
+		<h3>作業報告メール</h3>
+		<input type="text" class="mailSubject" value="" /><br />
+		<textarea class="mailBody"></textarea>
+	</div>
+</div>
+
 </body>
 </html>
