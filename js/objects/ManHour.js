@@ -5,5 +5,5 @@ function ManHour (value) {
 }
 
 ManHour.prototype.append = function($obj) {
-	$obj.append(manHour);
+	$obj.append(this.element);
 };

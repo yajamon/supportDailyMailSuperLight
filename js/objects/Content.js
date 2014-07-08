@@ -5,5 +5,5 @@ function Content (value) {
 }
 
 Content.prototype.append = function($obj) {
-	$obj.append(content);
+	$obj.append(this.element);
 };
