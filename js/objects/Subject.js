@@ -1,10 +1,9 @@
 function Subject (value) {
-	this.value = value;
+	this.element = $('<input type="text">');
+	this.element.addClass('subject');
+	this.element.val(value);
 }
 
 Subject.prototype.append = function($obj) {
-	var subject = $('<input type="text">');
-	subject.addClass('subject');
-	subject.val(this.value);
-	$obj.append(subject);
+	$obj.append(this.element);
 };

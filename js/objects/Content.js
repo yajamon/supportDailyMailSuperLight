@@ -1,10 +1,9 @@
 function Content (value) {
-	this.value = value;
+	this.element = $('<textarea>');
+	this.element.addClass('content');
+	this.element.val(value);
 }
 
 Content.prototype.append = function($obj) {
-	var content = $('<textarea>');
-	content.addClass('content');
-	content.val(this.value);
 	$obj.append(content);
 };
