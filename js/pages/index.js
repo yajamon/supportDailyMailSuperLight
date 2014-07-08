@@ -1,14 +1,13 @@
-var taskList = new TaskList();
-taskList.addEmptyTask();
+
 
 $(function() {
 	var taskListDom = $("#taskList");
-	taskList.appendTasks(taskListDom);
+	var taskList = new TaskList(taskListDom);
+
+	taskList.addEmptyTask();
 
 	// イベント登録
 	$('#tasks').on('click', '.add', function(){
 		taskList.addEmptyTask();
-		taskListDom.empty();
-		taskList.appendTasks(taskListDom);
 	});
 });

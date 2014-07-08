@@ -1,5 +1,6 @@
-function TaskList (){
+function TaskList ($obj){
 	this.tasks = [];
+	this.element = $obj;
 }
 
 TaskList.prototype.addEmptyTask = function() {
@@ -8,6 +9,8 @@ TaskList.prototype.addEmptyTask = function() {
 	var content = new Content('');
 	var task = new Task(subject, manHour, content);
 	this.tasks.push(task);
+
+	this.refresh();
 };
 
 TaskList.prototype.appendTasks = function($obj) {
@@ -15,4 +18,8 @@ TaskList.prototype.appendTasks = function($obj) {
 	for(var index = 0; index < length; ++index){
 		this.tasks[index].append($obj);
 	}
+};
+
+TaskList.prototype.refresh = function() {
+	this.appendTasks(this.element);
 };
