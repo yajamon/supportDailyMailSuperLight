@@ -1,24 +1,11 @@
-
-var today = new Date();
-var todayString = today.getFullYear()+'-'+zeroPadding(today.getMonth()+1, 2)+'-'+zeroPadding(today.getDate());
-
-function zeroPadding (string, length) {
-	var zeros = '';
-	for (var count = 0; count < length; count++) {
-		zeros += '0';
-	}
-	var result = zeros + string;
-	return result.substr(-length);
-}
-
 $(function() {
 	var taskListDom = $("#taskList");
 	var taskList = new TaskList(taskListDom);
+	var reportDate = new ReportDate($("#reportDate"));
+
+	reportDate.setToday();
 
 	taskList.addEmptyTask();
-
-
-	$('#reportDate').val(todayString);
 
 	// イベント登録
 	$('#tasks').on('click', '.add', function(){
@@ -26,14 +13,12 @@ $(function() {
 	});
 
 	$("#make").on('click', function(){
-		var reportDateStr = $('#reportDate').val();
-		reportDateStr = reportDateStr.replace(/-/g, '/');
-
 		var workScheduleSubject = new MailSubject($('#workSchedule').find('.mailSubject'));
 		var workScheduleBody = new MailBody($('#workSchedule').find('.mailBody'));
 
 		workScheduleSubject.clear();
-		workScheduleSubject.put(reportDateStr+' 作業予定');
+		reportDate.draw(workScheduleSubject);
+		workScheduleSubject.put(' 作業予定');
 
 		workScheduleBody.clear();
 		workScheduleBody.put('お疲れ様です。\n');
@@ -48,7 +33,8 @@ $(function() {
 		var workReportBody = new MailBody($('#workReport').find('.mailBody'));
 
 		workReportSubject.clear();
-		workReportSubject.put(reportDateStr+' 作業報告');
+		reportDate.draw(workReportSubject);
+		workReportSubject.put(' 作業報告');
 
 		workReportBody.clear();
 		workReportBody.put('お疲れ様です。\n');
