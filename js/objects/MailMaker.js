@@ -1,5 +1,8 @@
-function MailMaker (title, subject, body) {
-	this.title = title;
-	this.subject = subject;
-	this.body = body;
+function MailMaker ($obj) {
+	this.element = $obj;
+	this.subject = new MailSubject();
+	this.body = new MailBody();
+
+	this.subject.append(this.element);
+	this.body.append(this.element);
 }

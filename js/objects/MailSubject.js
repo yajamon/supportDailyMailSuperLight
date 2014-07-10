@@ -1,5 +1,6 @@
-function MailSubject ($obj) {
-	this.element = $obj;
+function MailSubject () {
+	this.element = $('<input type="text">');
+	this.element.addClass('mailSubject');
 }
 
 MailSubject.prototype.clear = function() {
@@ -9,4 +10,8 @@ MailSubject.prototype.clear = function() {
 MailSubject.prototype.put = function(putString) {
 	var newString = this.element.val() + putString;
 	this.element.val(newString);
+};
+
+MailSubject.prototype.append = function($obj) {
+	$obj.append(this.element);
 };
