@@ -7,3 +7,7 @@ function Content (value) {
 Content.prototype.append = function($obj) {
 	$obj.append(this.element);
 };
+
+Content.prototype.draw = function(out) {
+	out.put(this.element.val()+"\n");
+};
