@@ -7,6 +7,6 @@ MailBody.prototype.clear = function() {
 };
 
 MailBody.prototype.put = function(putString) {
-	var newString = this.element.val() + putString + "\n";
+	var newString = this.element.val() + putString;
 	this.element.val(newString);
 };
