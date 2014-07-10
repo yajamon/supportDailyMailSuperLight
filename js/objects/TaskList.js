@@ -24,3 +24,10 @@ TaskList.prototype.refresh = function() {
 	this.element.empty();
 	this.appendTasks(this.element);
 };
+
+TaskList.prototype.draw = function(out, manHourPrefix) {
+	var length = this.tasks.length;
+	for (var index = 0; index < length; index++) {
+		this.tasks[index].draw(out, manHourPrefix);
+	}
+};
