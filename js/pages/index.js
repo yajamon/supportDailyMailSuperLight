@@ -13,14 +13,12 @@ $(function() {
 	});
 
 	$("#make").on('click', function(){
-		var reportDateStr = $('#reportDate').val();
-		reportDateStr = reportDateStr.replace(/-/g, '/');
-
 		var workScheduleSubject = new MailSubject($('#workSchedule').find('.mailSubject'));
 		var workScheduleBody = new MailBody($('#workSchedule').find('.mailBody'));
 
 		workScheduleSubject.clear();
-		workScheduleSubject.put(reportDateStr+' 作業予定');
+		reportDate.draw(workScheduleSubject);
+		workScheduleSubject.put(' 作業予定');
 
 		workScheduleBody.clear();
 		workScheduleBody.put('お疲れ様です。\n');
@@ -35,7 +33,8 @@ $(function() {
 		var workReportBody = new MailBody($('#workReport').find('.mailBody'));
 
 		workReportSubject.clear();
-		workReportSubject.put(reportDateStr+' 作業報告');
+		reportDate.draw(workReportSubject);
+		workReportSubject.put(' 作業報告');
 
 		workReportBody.clear();
 		workReportBody.put('お疲れ様です。\n');
