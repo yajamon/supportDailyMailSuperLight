@@ -8,5 +8,5 @@ function MailMaker ($obj, subject, body) {
 }
 
 MailMaker.prototype.make = function(reportDate) {
-	this.subject.make();
+	this.subject.make(reportDate);
 };
