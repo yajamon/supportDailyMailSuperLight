@@ -2,8 +2,8 @@ $(function() {
 	var taskListDom = $("#taskList");
 	var taskList = new TaskList(taskListDom);
 	var reportDate = new ReportDate($("#reportDate"));
-	var workSchedule = new MailMaker($('#workSchedule'));
-	var workReport = new MailMaker($('#workReport'));
+	var workSchedule = new MailMaker($('#workSchedule'), new MailSubject('作業予定'), new MailBody());
+	var workReport = new MailMaker($('#workReport'), new MailSubject('作業報告'), new MailBody());
 
 	reportDate.setToday();
 
