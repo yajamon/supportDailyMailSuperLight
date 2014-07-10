@@ -24,4 +24,25 @@ $(function() {
 	$('#tasks').on('click', '.add', function(){
 		taskList.addEmptyTask();
 	});
+
+	$("#make").on('click', function(){
+		var reportDateStr = $('#reportDate').val();
+		reportDateStr = reportDateStr.replace(/-/g, '/');
+
+		var workScheduleSubject = new MailSubject($('#workSchedule').find('.mailSubject'));
+		var workScheduleBody = new MailBody($('#workSchedule').find('.mailBody'));
+
+		workScheduleSubject.clear();
+		workScheduleSubject.put(reportDateStr+' 作業予定');
+
+		workScheduleBody.clear();
+		workScheduleBody.put('お疲れ様です。\n');
+		workScheduleBody.put('\n');
+		workScheduleBody.put('本日の作業予定をご報告いたします。\n');
+		workScheduleBody.put('\n');
+		workScheduleBody.put('【作業予定】\n');
+		taskList.draw(workScheduleBody, '予定工数：');
+		workScheduleBody.put('以上、よろしくお願いいたします。');
+
+	});
 });
