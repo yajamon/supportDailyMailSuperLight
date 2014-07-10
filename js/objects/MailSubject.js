@@ -1,4 +1,5 @@
-function MailSubject () {
+function MailSubject (title) {
+	this.title = title;
 	this.element = $('<input type="text">');
 	this.element.addClass('mailSubject');
 }
