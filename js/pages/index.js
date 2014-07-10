@@ -2,6 +2,8 @@ $(function() {
 	var taskListDom = $("#taskList");
 	var taskList = new TaskList(taskListDom);
 	var reportDate = new ReportDate($("#reportDate"));
+	var workSchedule = new MailMaker($('#workSchedule'));
+	var workReport = new MailMaker($('#workReport'));
 
 	reportDate.setToday();
 
@@ -13,8 +15,8 @@ $(function() {
 	});
 
 	$("#make").on('click', function(){
-		var workScheduleSubject = new MailSubject($('#workSchedule').find('.mailSubject'));
-		var workScheduleBody = new MailBody($('#workSchedule').find('.mailBody'));
+		var workScheduleSubject = workSchedule.subject;
+		var workScheduleBody = workSchedule.body;
 
 		workScheduleSubject.clear();
 		reportDate.draw(workScheduleSubject);
@@ -29,8 +31,8 @@ $(function() {
 		taskList.draw(workScheduleBody, '予定工数：');
 		workScheduleBody.put('以上、よろしくお願いいたします。');
 
-		var workReportSubject = new MailSubject($('#workReport').find('.mailSubject'));
-		var workReportBody = new MailBody($('#workReport').find('.mailBody'));
+		var workReportSubject = workReport.subject;
+		var workReportBody = workReport.body;
 
 		workReportSubject.clear();
 		reportDate.draw(workReportSubject);
