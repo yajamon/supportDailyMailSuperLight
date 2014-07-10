@@ -15,12 +15,9 @@ $(function() {
 	});
 
 	$("#make").on('click', function(){
-		var workScheduleSubject = workSchedule.subject;
 		var workScheduleBody = workSchedule.body;
 
-		workScheduleSubject.clear();
-		reportDate.draw(workScheduleSubject);
-		workScheduleSubject.put(' 作業予定');
+		workSchedule.make(reportDate);
 
 		workScheduleBody.clear();
 		workScheduleBody.put('お疲れ様です。\n');
@@ -31,12 +28,9 @@ $(function() {
 		taskList.draw(workScheduleBody, '予定工数：');
 		workScheduleBody.put('以上、よろしくお願いいたします。');
 
-		var workReportSubject = workReport.subject;
 		var workReportBody = workReport.body;
 
-		workReportSubject.clear();
-		reportDate.draw(workReportSubject);
-		workReportSubject.put(' 作業報告');
+		workReport.make(reportDate);
 
 		workReportBody.clear();
 		workReportBody.put('お疲れ様です。\n');
