@@ -48,7 +48,7 @@ $(function() {
 		var workReportBody = new MailBody($('#workReport').find('.mailBody'));
 
 		workReportSubject.clear();
-		workReportSubject.put(reportDateStr+' 作業予定');
+		workReportSubject.put(reportDateStr+' 作業報告');
 
 		workReportBody.clear();
 		workReportBody.put('お疲れ様です。\n');
