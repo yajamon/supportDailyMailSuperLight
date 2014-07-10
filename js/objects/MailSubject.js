@@ -19,6 +19,6 @@ MailSubject.prototype.append = function($obj) {
 
 MailSubject.prototype.make = function(reportDate) {
 	this.clear();
-	reportDate.draw(this.subject);
+	reportDate.draw(this);
 	this.put(' '+ this.title);
 };
