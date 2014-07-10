@@ -6,3 +6,7 @@ function MailMaker ($obj, subject, body) {
 	this.subject.append(this.element);
 	this.body.append(this.element);
 }
+
+MailMaker.prototype.make = function(reportDate) {
+	this.subject.make();
+};
