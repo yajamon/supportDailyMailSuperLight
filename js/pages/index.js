@@ -56,7 +56,7 @@ $(function() {
 		workReportBody.put('本日の作業内容をご報告いたします。\n');
 		workReportBody.put('\n');
 		workReportBody.put('【作業報告】\n');
-		taskList.draw(workReportBody, '予定工数：');
+		taskList.draw(workReportBody, '実工数：');
 		workReportBody.put('以上、よろしくお願いいたします。');
 	});
 });
