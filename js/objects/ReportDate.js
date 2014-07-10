@@ -18,6 +18,12 @@ ReportDate.prototype.setByDate = function(dateObject) {
 	this.element.val(dateString);
 };
 
+ReportDate.prototype.draw = function(out) {
+	var dateString = this.element.val();
+	dateString = dateString.replace(/-/g, '/');
+	out.put(dateString);
+};
+
 ReportDate.prototype.setToday = function() {
 	this.setByDate(new Date());
 };
