@@ -19,5 +19,5 @@ ManHour.prototype.draw = function(out) {
 	var minutes = parseInt(splitedArray[1], 10);
 
 	hour = hour + (minutes/60);
-	out.put(hour+'h\n');
+	out.put(hour.toFixed(1)+'h\n');
 };
