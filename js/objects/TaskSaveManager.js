@@ -17,3 +17,10 @@ TaskSaveManager.prototype.stringify = function() {
 
 	return JSON.stringify(result);
 };
+
+TaskSaveManager.prototype.save = function() {
+	localStorage.setItem(
+		'taskList',
+		this.stringify()
+	);
+};

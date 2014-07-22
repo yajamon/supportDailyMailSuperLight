@@ -16,6 +16,10 @@ $(function() {
 		taskList.addEmptyTask();
 	});
 
+	$('#taskList').on('change', 'input', function(){
+		taskSaveManager.save();
+	});
+
 	$("#make").on('click', function(){
 		var workScheduleBody = workSchedule.body;
 
