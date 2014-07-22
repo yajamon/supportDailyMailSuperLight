@@ -5,6 +5,8 @@ $(function() {
 	var workSchedule = new MailMaker($('#workSchedule'), new MailSubject('作業予定'), new MailBody());
 	var workReport = new MailMaker($('#workReport'), new MailSubject('作業報告'), new MailBody());
 
+	window.taskSaveManager = new TaskSaveManager(taskList);
+
 	reportDate.setToday();
 
 	taskList.addEmptyTask();
