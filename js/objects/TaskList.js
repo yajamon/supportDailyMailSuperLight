@@ -17,6 +17,10 @@ TaskList.prototype.addEmptyTask = function() {
 	this.refresh();
 };
 
+TaskList.prototype.remove = function(index) {
+	this.tasks.splice(index, 1);
+};
+
 TaskList.prototype.appendTasks = function($obj) {
 	var length = this.tasks.length;
 	for(var index = 0; index < length; ++index){

@@ -21,6 +21,13 @@ $(function() {
 		taskSaveManager.save();
 	});
 
+	$('#taskList').on('click', '.delete', function () {
+		var task = $(this).closest('.task');
+		var clickedIndex = $('#taskList').find('.task').index(task.get(0));
+		taskList.remove(clickedIndex);
+		taskList.refresh();
+	});
+
 	$("#make").on('click', function(){
 		var workScheduleBody = workSchedule.body;
 

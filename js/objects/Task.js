@@ -12,6 +12,11 @@ Task.prototype.append = function($obj) {
 	this.manHour.append(task);
 	this.content.append(task);
 
+	var deleteButton = $('<input type="button">');
+	deleteButton.addClass('delete');
+	deleteButton.val('タスク削除');
+	task.append(deleteButton);
+
 	$obj.append(task);
 };
 
