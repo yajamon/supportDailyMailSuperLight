@@ -18,7 +18,8 @@ TaskList.prototype.addEmptyTask = function() {
 };
 
 TaskList.prototype.remove = function(index) {
-	this.tasks.splice(index, 1);
+	var deleteLength = 1;
+	this.tasks.splice(index, deleteLength);
 };
 
 TaskList.prototype.appendTasks = function($obj) {
