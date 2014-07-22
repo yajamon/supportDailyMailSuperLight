@@ -1,24 +1,13 @@
-
-var today = new Date();
-var todayString = today.getFullYear()+'-'+zeroPadding(today.getMonth()+1, 2)+'-'+zeroPadding(today.getDate());
-
-function zeroPadding (string, length) {
-	var zeros = '';
-	for (var count = 0; count < length; count++) {
-		zeros += '0';
-	}
-	var result = zeros + string;
-	return result.substr(-length);
-}
-
 $(function() {
 	var taskListDom = $("#taskList");
 	var taskList = new TaskList(taskListDom);
+	var reportDate = new ReportDate($("#reportDate"));
+	var workSchedule = new MailMaker($('#workSchedule'), new MailSubject('作業予定'), new MailBody());
+	var workReport = new MailMaker($('#workReport'), new MailSubject('作業報告'), new MailBody());
+
+	reportDate.setToday();
 
 	taskList.addEmptyTask();
-
-
-	$('#reportDate').val(todayString);
 
 	// イベント登録
 	$('#tasks').on('click', '.add', function(){
@@ -26,14 +15,9 @@ $(function() {
 	});
 
 	$("#make").on('click', function(){
-		var reportDateStr = $('#reportDate').val();
-		reportDateStr = reportDateStr.replace(/-/g, '/');
+		var workScheduleBody = workSchedule.body;
 
-		var workScheduleSubject = new MailSubject($('#workSchedule').find('.mailSubject'));
-		var workScheduleBody = new MailBody($('#workSchedule').find('.mailBody'));
-
-		workScheduleSubject.clear();
-		workScheduleSubject.put(reportDateStr+' 作業予定');
+		workSchedule.make(reportDate);
 
 		workScheduleBody.clear();
 		workScheduleBody.put('お疲れ様です。\n');
@@ -44,11 +28,9 @@ $(function() {
 		taskList.draw(workScheduleBody, '予定工数：');
 		workScheduleBody.put('以上、よろしくお願いいたします。');
 
-		var workReportSubject = new MailSubject($('#workReport').find('.mailSubject'));
-		var workReportBody = new MailBody($('#workReport').find('.mailBody'));
+		var workReportBody = workReport.body;
 
-		workReportSubject.clear();
-		workReportSubject.put(reportDateStr+' 作業報告');
+		workReport.make(reportDate);
 
 		workReportBody.clear();
 		workReportBody.put('お疲れ様です。\n');

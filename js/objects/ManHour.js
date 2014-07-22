@@ -9,5 +9,15 @@ ManHour.prototype.append = function($obj) {
 };
 
 ManHour.prototype.draw = function(out) {
-	out.put(this.element.val()+"\n");
+	var timeString = this.element.val();
+	if (timeString == "") {
+		timeString = "00:00";
+	}
+
+	var splitedArray = timeString.split(':');
+	var hour = parseInt(splitedArray[0], 10);
+	var minutes = parseInt(splitedArray[1], 10);
+
+	hour = hour + (minutes/60);
+	out.put(hour.toFixed(1)+'h\n');
 };
