@@ -5,18 +5,19 @@ $(function() {
 	var workSchedule = new MailMaker($('#workSchedule'), new MailSubject('作業予定'), new MailBody());
 	var workReport = new MailMaker($('#workReport'), new MailSubject('作業報告'), new MailBody());
 
-	window.taskSaveManager = new TaskSaveManager(taskList);
+	var taskSaveManager = new TaskSaveManager(taskList);
 
 	reportDate.setToday();
 
-	taskList.addEmptyTask();
+	taskSaveManager.load();
+	taskList.refresh();
 
 	// イベント登録
 	$('#tasks').on('click', '.add', function(){
 		taskList.addEmptyTask();
 	});
 
-	$('#taskList').on('change', 'input', function(){
+	$('#taskList').on('change', 'input,textarea', function(){
 		taskSaveManager.save();
 	});
 
