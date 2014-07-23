@@ -54,9 +54,17 @@ $(function() {
 		workReportBody.put('【作業報告】\n');
 		taskList.draw(workReportBody, '実工数：');
 		workReportBody.put('以上、よろしくお願いいたします。');
+
+		$('#maked textarea').trigger('autosize.resize');
 	});
 
-	$('#tasks,#maked').on('focus', 'textarea', function(){
+	// フォーカス時にリサイズ
+	$('#tasks').on('focus', 'textarea', function(){
 		$(this).autosize().trigger('autosize.resize');
 	});
+
+	$('#tasks').find('textarea').focus().blur();
+
+	$('#maked').find('textarea').autosize();
+
 });
