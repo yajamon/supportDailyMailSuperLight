@@ -17,7 +17,7 @@ $(function() {
 		taskList.addEmptyTask();
 	});
 
-	$('#taskList').on('change', 'input,textarea', function(){
+	$('#taskList').on('keyup', 'input,textarea', function(){
 		taskSaveManager.save();
 	});
 
