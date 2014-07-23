@@ -16,8 +16,4 @@ body{
 .mailBody{
 	min-width: 20em;
 	width: 75%;
-	min-height: 10em;
-}
-.mailBody{
-	height: 30em;
 }
