@@ -7,5 +7,12 @@ var MyDate = function (argument) {
 };
 
 MyDate.prototype.format = function(formatString) {
+	formatString = this.replaceYear(formatString);
+
 	return formatString;
+};
+
+MyDate.prototype.replaceYear = function(formatString) {
+	var year = this.date.getFullYear();
+	return formatString.replace(/%Y/gi, year);
 };
