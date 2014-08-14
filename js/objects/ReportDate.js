@@ -3,18 +3,8 @@ function ReportDate ($obj) {
 }
 
 ReportDate.prototype.setByDate = function(dateObject) {
-	var year = dateObject.getFullYear();
-	var month = dateObject.getMonth() + 1;
-	var date = dateObject.getDate();
-
-	if (month < 10) {
-		month = '0' + month;
-	}
-	if (date < 10) {
-		date = '0' + date;
-	}
-
-	var dateString = year+'-'+month+'-'+date;
+	var formatString = '%Y-%m-%d';
+	var dateString = dateObject.format(formatString);
 	this.element.val(dateString);
 };
 
@@ -25,5 +15,5 @@ ReportDate.prototype.draw = function(out) {
 };
 
 ReportDate.prototype.setToday = function() {
-	this.setByDate(new Date());
+	this.setByDate(new MyDate());
 };
