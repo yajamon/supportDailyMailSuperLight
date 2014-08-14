@@ -5,3 +5,7 @@ var MyDate = function (argument) {
 	}
 	this.date = new Date(argument);
 };
+
+MyDate.prototype.format = function(formatString) {
+	return formatString;
+};
