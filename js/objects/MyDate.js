@@ -9,6 +9,7 @@ var MyDate = function (argument) {
 MyDate.prototype.format = function(formatString) {
 	formatString = this.replaceYear(formatString);
 	formatString = this.replaceMonth(formatString);
+	formatString = this.replaceDate(formatString);
 
 	return formatString;
 };
@@ -24,4 +25,12 @@ MyDate.prototype.replaceMonth = function(formatString) {
 		month = '0' + month;
 	}
 	return formatString.replace(/%m/gi, month);
+};
+
+MyDate.prototype.replaceDate = function(formatString) {
+	var date = this.date.getDate();
+	if (date < 10) {
+		date = '0' + date;
+	}
+	return formatString.replace(/%d/gi, date);
 };
