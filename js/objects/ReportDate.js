@@ -8,8 +8,8 @@ ReportDate.prototype.setByDate = function(dateObject) {
 };
 
 ReportDate.prototype.draw = function(out) {
-	var dateString = this.element.val();
-	dateString = dateString.replace(/-/g, '/');
+	var date = new MyDate(this.element.val());
+	var dateString = date.format('%Y/%m/%d');
 	out.put(dateString);
 };
 
