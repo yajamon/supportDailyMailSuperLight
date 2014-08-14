@@ -3,6 +3,10 @@ function TaskList ($obj){
 	this.element = $obj;
 }
 
+TaskList.prototype.add = function(task) {
+	this.tasks.push(task);
+};
+
 TaskList.prototype.addEmptyTask = function() {
 	var subject = new Subject('');
 	var manHour = new ManHour('');
@@ -11,6 +15,11 @@ TaskList.prototype.addEmptyTask = function() {
 	this.tasks.push(task);
 
 	this.refresh();
+};
+
+TaskList.prototype.remove = function(index) {
+	var deleteLength = 1;
+	this.tasks.splice(index, deleteLength);
 };
 
 TaskList.prototype.appendTasks = function($obj) {
