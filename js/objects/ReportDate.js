@@ -3,8 +3,7 @@ function ReportDate ($obj) {
 }
 
 ReportDate.prototype.setByDate = function(dateObject) {
-	var formatString = '%Y-%m-%d';
-	var dateString = dateObject.format(formatString);
+	var dateString = dateObject.format('%Y-%m-%d');
 	this.element.val(dateString);
 };
 
