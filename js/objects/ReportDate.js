@@ -9,7 +9,7 @@ ReportDate.prototype.setByDate = function(dateObject) {
 
 ReportDate.prototype.draw = function(out) {
 	var date = new MyDate(this.element.val());
-	var dateString = date.format('%Y/%m/%d');
+	var dateString = date.format('%m/%d');
 	out.put(dateString);
 };
 
