@@ -10,7 +10,7 @@ TaskSaveManager.prototype.stringify = function() {
 		task = tasks[index];
 		result[index] = {
 			subject : task.subject.element.val(),
-			manHour : task.manHour.element.val(),
+			manHour : task.manHour.value,
 			content : task.content.value,
 		};
 	}
