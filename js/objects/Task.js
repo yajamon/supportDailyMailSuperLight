@@ -4,20 +4,26 @@ function Task (subject, manHour, content) {
     this.content = content;
 }
 
-Task.prototype.append = function($obj) {
-    var task = $('<div>');
-    task.addClass('task');
-
-    this.subject.append(task);
-    this.manHour.append(task);
-    this.content.append(task);
+Task.prototype.tojQueryObject = function() {
+    var $object = $('<div>');
+    $object.addClass('task');
 
     var deleteButton = $('<input type="button">');
     deleteButton.addClass('delete');
     deleteButton.val('タスク削除');
-    task.append(deleteButton);
 
-    $obj.append(task);
+    $object.append(
+        this.subject.tojQueryObject(),
+        this.manHour.tojQueryObject(),
+        this.content.tojQueryObject(),
+        deleteButton
+    );
+
+    return $object;
+};
+
+Task.prototype.append = function($obj) {
+    $obj.append(this.tojQueryObject());
 };
 
 Task.prototype.draw = function(out, manHourPrefix) {
