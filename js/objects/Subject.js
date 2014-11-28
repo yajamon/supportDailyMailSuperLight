@@ -1,5 +1,5 @@
 function Subject (value) {
-	this.value = value;
+    this.value = value;
 }
 
 Subject.prototype.tojQueryObject = function() {
@@ -10,9 +10,9 @@ Subject.prototype.tojQueryObject = function() {
 };
 
 Subject.prototype.append = function($obj) {
-	$obj.append(this.tojQueryObject());
+    $obj.append(this.tojQueryObject());
 };
 
 Subject.prototype.draw = function(out) {
-	out.put(this.value+"\n");
+    out.put(this.value+"\n");
 };
