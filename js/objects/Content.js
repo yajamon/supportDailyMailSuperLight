@@ -9,10 +9,6 @@ Content.prototype.tojQueryObject = function() {
     return $object;
 };
 
-Content.prototype.append = function($obj) {
-    $obj.append(this.tojQueryObject());
-};
-
 Content.prototype.draw = function(out) {
     out.put(this.value+"\n");
 };

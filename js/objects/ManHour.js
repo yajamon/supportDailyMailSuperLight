@@ -9,10 +9,6 @@ ManHour.prototype.tojQueryObject = function() {
     return $object;
 };
 
-ManHour.prototype.append = function($obj) {
-    $obj.append(this.tojQueryObject());
-};
-
 ManHour.prototype.draw = function(out) {
     var timeString = this.value;
     if (timeString == "") {

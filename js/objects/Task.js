@@ -22,10 +22,6 @@ Task.prototype.tojQueryObject = function() {
     return $object;
 };
 
-Task.prototype.append = function($obj) {
-    $obj.append(this.tojQueryObject());
-};
-
 Task.prototype.draw = function(out, manHourPrefix) {
     if(manHourPrefix == null){
         manHourPrefix = '';
