@@ -1,15 +1,20 @@
 function ManHour (value) {
-    this.element = $('<input type="time">');
-    this.element.addClass('manHour');
-    this.element.val(value);
+    this.value = value;
 }
 
+ManHour.prototype.tojQueryObject = function() {
+    var $object = $('<input type="time">');
+    $object.addClass('manHour');
+    $object.val(this.value);
+    return $object;
+};
+
 ManHour.prototype.append = function($obj) {
-    $obj.append(this.element);
+    $obj.append(this.tojQueryObject());
 };
 
 ManHour.prototype.draw = function(out) {
-    var timeString = this.element.val();
+    var timeString = this.value;
     if (timeString == "") {
         timeString = "00:00";
     }
