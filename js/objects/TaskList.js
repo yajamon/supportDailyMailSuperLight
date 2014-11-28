@@ -25,7 +25,7 @@ TaskList.prototype.remove = function(index) {
 TaskList.prototype.appendTasks = function($obj) {
 	var length = this.tasks.length;
 	for(var index = 0; index < length; ++index){
-		this.tasks[index].append($obj);
+		$obj.append( this.tasks[index].tojQueryObject() );
 	}
 };
 
