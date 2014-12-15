@@ -9,9 +9,9 @@ TaskSaveManager.prototype.stringify = function() {
 	for (var index = 0; index < tasks.length; index++) {
 		task = tasks[index];
 		result[index] = {
-			subject : task.subject.element.val(),
-			manHour : task.manHour.element.val(),
-			content : task.content.element.val(),
+			subject : task.subject.value,
+			manHour : task.manHour.value,
+			content : task.content.value,
 		};
 	}
 
@@ -37,6 +37,16 @@ TaskSaveManager.prototype.save = function() {
 		'taskList',
 		this.stringify()
 	);
+};
+
+TaskSaveManager.prototype.updateTask = function(task) {
+	var index = task.find('.index').val();
+
+	this.taskList.update(index, {
+		subject: task.find('.subject').val(),
+		manHour: task.find('.manHour').val(),
+		content: task.find('.content').val(),
+	});
 };
 
 TaskSaveManager.prototype.load = function() {

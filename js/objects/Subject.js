@@ -1,13 +1,18 @@
 function Subject (value) {
-	this.element = $('<input type="text">');
-	this.element.addClass('subject');
-	this.element.val(value);
+    this.value = value;
 }
 
-Subject.prototype.append = function($obj) {
-	$obj.append(this.element);
+Subject.prototype.tojQueryObject = function() {
+    var $object = $('<input type="text">');
+    $object.addClass('subject');
+    $object.val(this.value);
+    return $object;
 };
 
 Subject.prototype.draw = function(out) {
-	out.put(this.element.val()+"\n");
+    out.put(this.value+"\n");
+};
+
+Subject.prototype.update = function(value) {
+    this.value = value;
 };

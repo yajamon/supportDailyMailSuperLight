@@ -25,7 +25,14 @@ TaskList.prototype.remove = function(index) {
 TaskList.prototype.appendTasks = function($obj) {
 	var length = this.tasks.length;
 	for(var index = 0; index < length; ++index){
-		this.tasks[index].append($obj);
+		var hidden_index = $('<input type="hidden">');
+		hidden_index.addClass('index');
+		hidden_index.val(index);
+
+		var task = this.tasks[index].tojQueryObject();
+		task.append(hidden_index);
+
+		$obj.append( task );
 	}
 };
 
@@ -39,4 +46,8 @@ TaskList.prototype.draw = function(out, manHourPrefix) {
 	for (var index = 0; index < length; index++) {
 		this.tasks[index].draw(out, manHourPrefix);
 	}
+};
+
+TaskList.prototype.update = function(index, params) {
+	this.tasks[index].update(params);
 };
