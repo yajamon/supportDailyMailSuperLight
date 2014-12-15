@@ -39,6 +39,16 @@ TaskSaveManager.prototype.save = function() {
 	);
 };
 
+TaskSaveManager.prototype.updateTask = function(task) {
+	var index = task.find('.index').val();
+
+	this.taskList.update(index, {
+		subject: task.find('.subject').val(),
+		manHour: task.find('.manHour').val(),
+		content: task.find('.content').val(),
+	});
+};
+
 TaskSaveManager.prototype.load = function() {
 	var taskListString = localStorage.getItem('taskList');
 

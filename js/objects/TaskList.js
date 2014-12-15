@@ -47,3 +47,7 @@ TaskList.prototype.draw = function(out, manHourPrefix) {
 		this.tasks[index].draw(out, manHourPrefix);
 	}
 };
+
+TaskList.prototype.update = function(index, params) {
+	this.tasks[index].update(params);
+};
