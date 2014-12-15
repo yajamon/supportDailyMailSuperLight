@@ -74,3 +74,34 @@ TaskList.prototype.replace = function(from, to) {
 	this.tasks[to] = this.tasks[from];
 	this.tasks[from] = temporary;
 };
+
+TaskList.prototype.haveIndex = function(index) {
+	var last_index = this.tasks.length - 1;
+
+	if (index < 0 || last_index < index) {
+		return false;
+	}
+
+	return true;
+
+};
+
+TaskList.prototype.replaceUp = function(index) {
+	var to_index = index - 1;
+
+	if (!this.haveIndex(index) || !this.haveIndex(to_index)) {
+		return;
+	};
+
+	this.replace(index, to_index);
+};
+
+TaskList.prototype.replaceDown = function(index) {
+	var to_index = index + 1;
+
+	if (!this.haveIndex(index) || !this.haveIndex(to_index)) {
+		return;
+	};
+
+	this.replace(index, to_index);
+};
