@@ -22,3 +22,7 @@ ManHour.prototype.draw = function(out) {
     hour = hour + (minutes/60);
     out.put(hour.toFixed(1)+'h\n');
 };
+
+ManHour.prototype.update = function(value) {
+    this.value = value;
+};

@@ -12,3 +12,7 @@ Subject.prototype.tojQueryObject = function() {
 Subject.prototype.draw = function(out) {
     out.put(this.value+"\n");
 };
+
+Subject.prototype.update = function(value) {
+    this.value = value;
+};

@@ -32,3 +32,12 @@ Task.prototype.draw = function(out, manHourPrefix) {
     this.content.draw(out);
     out.put('\n');
 };
+
+Task.prototype.update = function(params) {
+    var subject_value = params.subject;
+    var manHour_value = params.manHour;
+    var content_value = params.content;
+    this.subject.update(subject_value);
+    this.manHour.update(manHour_value);
+    this.content.update(content_value);
+};
