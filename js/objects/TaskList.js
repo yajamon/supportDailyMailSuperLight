@@ -61,3 +61,16 @@ TaskList.prototype.draw = function(out, manHourPrefix) {
 TaskList.prototype.update = function(index, params) {
 	this.tasks[index].update(params);
 };
+
+TaskList.prototype.replace = function(from, to) {
+	if (this.tasks[from] == null) {
+		throw new Error('from index:'+from+' is no value');
+	}
+	if (this.tasks[to] == null) {
+		throw new Error('to index:'+to+' is no value');
+	}
+
+	var temporary = this.tasks[to];
+	this.tasks[to] = this.tasks[from];
+	this.tasks[from] = temporary;
+};
