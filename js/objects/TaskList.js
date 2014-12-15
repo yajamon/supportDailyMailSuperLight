@@ -29,8 +29,18 @@ TaskList.prototype.appendTasks = function($obj) {
 		hidden_index.addClass('index');
 		hidden_index.val(index);
 
+		var up_button = $('<input type="button">');
+		up_button.addClass('up');
+		up_button.val('上へ');
+
+		var down_button = $('<input type="button">');
+		down_button.addClass('down');
+		down_button.val('下へ');
+
 		var task = this.tasks[index].tojQueryObject();
 		task.append(hidden_index);
+		task.append(up_button);
+		task.append(down_button);
 
 		$obj.append( task );
 	}
