@@ -29,8 +29,18 @@ TaskList.prototype.appendTasks = function($obj) {
 		hidden_index.addClass('index');
 		hidden_index.val(index);
 
+		var up_button = $('<input type="button">');
+		up_button.addClass('up');
+		up_button.val('上へ');
+
+		var down_button = $('<input type="button">');
+		down_button.addClass('down');
+		down_button.val('下へ');
+
 		var task = this.tasks[index].tojQueryObject();
 		task.append(hidden_index);
+		task.append(up_button);
+		task.append(down_button);
 
 		$obj.append( task );
 	}
@@ -50,4 +60,48 @@ TaskList.prototype.draw = function(out, manHourPrefix) {
 
 TaskList.prototype.update = function(index, params) {
 	this.tasks[index].update(params);
+};
+
+TaskList.prototype.replace = function(from, to) {
+	if (this.tasks[from] == null) {
+		throw new Error('from index:'+from+' is no value');
+	}
+	if (this.tasks[to] == null) {
+		throw new Error('to index:'+to+' is no value');
+	}
+
+	var temporary = this.tasks[to];
+	this.tasks[to] = this.tasks[from];
+	this.tasks[from] = temporary;
+};
+
+TaskList.prototype.haveIndex = function(index) {
+	var last_index = this.tasks.length - 1;
+
+	if (index < 0 || last_index < index) {
+		return false;
+	}
+
+	return true;
+
+};
+
+TaskList.prototype.replaceUp = function(index) {
+	var to_index = index - 1;
+
+	if (!this.haveIndex(index) || !this.haveIndex(to_index)) {
+		return;
+	};
+
+	this.replace(index, to_index);
+};
+
+TaskList.prototype.replaceDown = function(index) {
+	var to_index = index + 1;
+
+	if (!this.haveIndex(index) || !this.haveIndex(to_index)) {
+		return;
+	};
+
+	this.replace(index, to_index);
 };
