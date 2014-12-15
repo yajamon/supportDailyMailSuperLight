@@ -33,6 +33,22 @@ $(function() {
 		taskList.refresh();
 	});
 
+	$('#taskList').on('click', '.up', function () {
+		var task = $(this).closest('.task');
+		var clickedIndex = parseInt(task.find('.index').val(), 10);
+
+		taskList.replaceUp(clickedIndex);
+		taskList.refresh();
+	});
+
+	$('#taskList').on('click', '.down', function () {
+		var task = $(this).closest('.task');
+		var clickedIndex = parseInt(task.find('.index').val(), 10);
+
+		taskList.replaceDown(clickedIndex);
+		taskList.refresh();
+	});
+
 	$("#make").on('click', function(){
 		var workScheduleBody = workSchedule.body;
 
