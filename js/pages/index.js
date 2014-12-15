@@ -18,6 +18,11 @@ $(function() {
 	});
 
 	$('#taskList').on('keyup', 'input,textarea', function(){
+		var task = $(this).closest('.task');
+		var clickedIndex = task.find('.index').val();
+
+		taskSaveManager.updateTask(task);
+
 		taskSaveManager.save();
 	});
 
